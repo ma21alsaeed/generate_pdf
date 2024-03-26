@@ -11,10 +11,11 @@ const port = 3000;
 // Middleware to parse JSON bodies
 app.use(express.json());
 // API endpoint to generate and return HTML
-app.post('/generate-html', async (req, res) => {
+// API endpoint to generate and return HTML
+app.get('/generate-html', async (req, res) => {
     try {
-        // Data from the request body
-        const { quotation, transportation, accommodation, flights } = req.body;
+        // Data from the request query parameters
+        const { quotation, transportation, accommodation, flights } = req.query;
 
         // Read EJS template files
         const headerEJS = fs.readFileSync(path.join(__dirname, 'templates', 'header.ejs'), 'utf8');
@@ -41,6 +42,7 @@ app.post('/generate-html', async (req, res) => {
         res.status(500).send('Internal Server Error');
     }
 });
+
 
 // API endpoint to generate and return PDF
 app.post('/generate-pdf', async (req, res) => {
