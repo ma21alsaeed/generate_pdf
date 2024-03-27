@@ -2,7 +2,6 @@ const express = require('express');
 const puppeteer = require('puppeteer');
 const fs = require('fs');
 const ejs = require('ejs');
-
 const path = require('path');
 
 const app = express();
@@ -17,6 +16,7 @@ app.post('/generate-html', async (req, res) => {
         const { quotation, transportation, accommodation, flights } = req.body;
 
         // Read EJS template files
+        console.log(transportation);
         const headerEJS = fs.readFileSync(path.join(__dirname, 'templates', 'header.ejs'), 'utf8');
         const bodyEJS = fs.readFileSync(path.join(__dirname, 'templates', 'body.ejs'), 'utf8');
         const footerEJS = fs.readFileSync(path.join(__dirname, 'templates', 'footer.ejs'), 'utf8');
@@ -26,12 +26,13 @@ app.post('/generate-html', async (req, res) => {
         const bodyHTML = ejs.render(bodyEJS, { accommodation, flights, transportation });
         const footerHTML = ejs.render(footerEJS);
 
-        // Generate HTML content
-        let htmlContent = `
-            ${headerHTML}
-            ${bodyHTML}
-            ${footerHTML}
-        `;
+// Generate HTML content
+let htmlContent = `${headerHTML}${bodyHTML}${footerHTML}`;
+
+// Remove newline characters
+htmlContent = htmlContent.replace(/\n/g, '');
+
+
 
         // Send HTML as response
         res.setHeader('Content-Type', 'text/html');
@@ -87,5 +88,5 @@ app.post('/generate-pdf', async (req, res) => {
 
 // Start the server
 app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
+    console.log(`Server is running`);
 });

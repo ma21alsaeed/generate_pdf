@@ -1,6 +1,14 @@
-<header style="background-color: #2ecc71; color: rgb(0, 0, 0); padding: 20px;">
-    <h1>Safari Trabzon</h1>
-    <p>Customer: John Doe</p>
-    <p>Email: johndoe@example.com</p>
-    <p>Phone: 123-456-7890</p>
+<header style="background-color: #2ecc71; color: rgb(255, 255, 255); padding: 20px; display: flex; justify-content: space-between;">
+    <div>
+        <h1 style="color: black;">Safari Trabzon</h1>
+        <p>Customer: <%= quotation.customer %></p>
+        <p>Email: <%= quotation.email %></p>
+        <p>Phone: <%= quotation.phone %></p>
+    </div>
+    <div>
+        <img src="/assets/images/logo.png">
+        <p>Quote No: <%= quotation.Quote_No %></p>
+        <p>Grand Total: <%= quotation.Grand_Total %></p>
+        <p>No of Travelers: <%= quotation.No_of_Travelers %></p>
+    </div>
 </header>
