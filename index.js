@@ -11,17 +11,6 @@ app.use(express.static('templates'));
 const puppeteer = require('puppeteer')
 
 
-let browserPromise = puppeteer.launch(
-    {
-    args: [
-        '--no-sandbox'
-    ]
-}
-);
-const {join} = require('path');
-module.exports = {
-  cacheDirectory: join(__dirname, '.cache', 'puppeteer')
-};
 // Middleware to parse JSON bodies
 app.use(express.json());
 // API endpoint to generate and return HTML
