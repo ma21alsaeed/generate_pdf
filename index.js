@@ -5,7 +5,7 @@ const ejs = require('ejs');
 const path = require('path');
 
 const app = express();
-const port = 3000;
+
 app.use(express.static('public'));
 app.use(express.static('templates'));
 const puppeteer = require('puppeteer')
@@ -90,7 +90,11 @@ app.post('/generate-pdf', async (req, res) => {
     }
 });
 
-// Start the server
-app.listen(port, () => {
-    console.log(`Server is running`);
+
+// Use PORT provided in environment or default to 3000
+const port = process.env.PORT || 3000;
+
+// Listen on `port` and 0.0.0.0
+app.listen(port, "0.0.0.0", function () {
+  // ...
 });
