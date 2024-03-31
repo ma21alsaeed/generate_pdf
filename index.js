@@ -10,6 +10,7 @@ app.use(express.static('public'));
 app.use(express.static('templates'));
 const puppeteer = require('puppeteer')
 
+const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
 
 // Middleware to parse JSON bodies
 app.use(express.json());
