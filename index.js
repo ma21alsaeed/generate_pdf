@@ -10,7 +10,7 @@ app.use(express.static('public'));
 app.use(express.static('templates'));
 const puppeteer = require('puppeteer')
 
-const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
+
 
 // Middleware to parse JSON bodies
 app.use(express.json());
@@ -96,6 +96,6 @@ app.post('/generate-pdf', async (req, res) => {
 const port = process.env.PORT || 3000;
 
 // Listen on `port` and 0.0.0.0
-app.listen(port, "0.0.0.0", function () {
+app.listen(port, function () {
   // ...
 });
