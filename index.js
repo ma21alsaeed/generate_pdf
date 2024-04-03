@@ -9,15 +9,7 @@ const app = express();
 app.use(express.static('public'));
 app.use(express.static('templates'));
 const puppeteer = require('puppeteer');
-const {join} = require('path');
 
-/**
- * @type {import("puppeteer").Configuration}
- */
-module.exports = {
-    // Changes the cache location for Puppeteer.
-    cacheDirectory: join(__dirname, '.cache', 'puppeteer'),
-};
 
 
 // Middleware to parse JSON bodies
