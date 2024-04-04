@@ -11,11 +11,11 @@
     "start": "node index"
   },
   "dependencies": {
-    "dotenv": "^16.0.3",
+    "@directus/sdk": "^15.1.0",
     "body-parser": "^1.20.2",
+    "dotenv": "^16.0.3",
     "ejs": "^3.1.9",
     "express": "^4.19.2",
     "puppeteer": "^22.6.1"
   }
 }
-
