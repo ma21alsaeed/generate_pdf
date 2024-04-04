@@ -4,10 +4,9 @@ const fs = require('fs');
 const ejs = require('ejs');
 const path = require('path');
 
+const { createDirectus, rest, uploadFiles } = require('@directus/sdk');
+const { readFileSync } = require('fs');
 
-
-import { createDirectus, rest, uploadFiles } from '@directus/sdk';
-import { readFileSync } from 'node:fs';
 
 require("dotenv").config();
 const app = express();
