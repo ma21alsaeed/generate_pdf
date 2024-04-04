@@ -1,16 +1,17 @@
 const express = require('express');
-
+const puppeteer = require('puppeteer');
 const fs = require('fs');
 const ejs = require('ejs');
 const path = require('path');
 
-const app = express();
 
+
+
+
+require("dotenv").config();
+const app = express();
 app.use(express.static('public'));
 app.use(express.static('templates'));
-const puppeteer = require('puppeteer');
-
-
 
 // Middleware to parse JSON bodies
 app.use(express.json());
@@ -72,7 +73,18 @@ app.post('/generate-pdf', async (req, res) => {
         `;
 
         // Launch Puppeteer
-        const browser = await puppeteer.launch();
+        const browser = await puppeteer.launch({
+            args: [
+              "--disable-setuid-sandbox",
+              "--no-sandbox",
+              "--single-process",
+              "--no-zygote",
+            ],
+            executablePath:
+              process.env.NODE_ENV === "production"
+                ? process.env.PUPPETEER_EXECUTABLE_PATH
+                : puppeteer.executablePath(),
+          });
         const page = await browser.newPage();
 
         // Set content and render PDF
