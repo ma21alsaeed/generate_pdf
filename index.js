@@ -106,8 +106,11 @@ app.post('/generate-pdf', async (req, res) => {
         const formData = new FormData();
 
         // Add the PDF to the form data
+// Convert the Buffer to a Blob
+const pdfBlob = new Blob([pdfBuffer], { type: 'application/pdf' });
+
 // Add the PDF to the form data
-formData.append('file', pdfBuffer, 'example.pdf');
+formData.append('file', pdfBlob, 'example.pdf');
 
 
         // Add any other fields to the form data
