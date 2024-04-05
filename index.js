@@ -97,7 +97,6 @@ app.post('/generate-pdf', async (req, res) => {
 
         // Send PDF as response
         res.setHeader('Content-Type', 'application/pdf');
-        res.send(pdfBuffer);
                 // ... (your existing code to generate the PDF)
 
         // Create a Directus client
@@ -107,7 +106,9 @@ app.post('/generate-pdf', async (req, res) => {
         const formData = new FormData();
 
         // Add the PDF to the form data
-        formData.append('file', pdfBuffer, { filename: 'example.pdf' });
+// Add the PDF to the form data
+formData.append('file', pdfBuffer, 'example.pdf');
+
 
         // Add any other fields to the form data
         formData.append('title', 'example');
@@ -115,8 +116,7 @@ app.post('/generate-pdf', async (req, res) => {
         // Upload the file to Directus
         const result = await client.request(uploadFiles(formData));
 
-        // Send a success response
-        res.send('PDF successfully uploaded to Directus!');
+
     } catch (error) {
         console.error('Error:', error);
         res.status(500).send('Internal Server Error');
