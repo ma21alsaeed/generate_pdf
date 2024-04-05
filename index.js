@@ -105,16 +105,12 @@ app.post('/generate-pdf', async (req, res) => {
         // Create a new form data object
         const formData = new FormData();
 
-        // Add the PDF to the form data
-// Convert the Buffer to a Blob
-const pdfBlob = new Blob([pdfBuffer], { type: 'application/pdf' });
-
-// Add the PDF to the form data
-formData.append('file', pdfBlob, 'example.pdf');
+        const pdfBlob = new Blob([pdfBuffer], { type: 'application/pdf' });
+        formData.append('file', pdfBlob, quotation.Quote_No.toString()+".pdf");
 
 
         // Add any other fields to the form data
-        formData.append('title', 'example');
+        formData.append('title', quotation.Quote_No.toString());
 
         // Upload the file to Directus
         const result = await client.request(uploadFiles(formData));
