@@ -111,9 +111,11 @@ app.post('/generate-pdf', async (req, res) => {
 
         // Add any other fields to the form data
         formData.append('title', quotation.Quote_No.toString());
-        res.send("succses");
+        
         // Upload the file to Directus
         const result = await client.request(uploadFiles(formData));
+        res.send(result);
+        
 
 
     } catch (error) {
