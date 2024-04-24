@@ -16,7 +16,8 @@ const generatePdf = async (htmlContent) => {
 
     const page = await browser.newPage();
     await page.setContent(htmlContent);
-    const pdfBuffer = await page.pdf();
+    
+    const pdfBuffer = await page.pdf( { format: "A4",printBackground: true});
 
     await browser.close();
 
