@@ -26,6 +26,7 @@
         <thead>
             <tr style="background-color: #f2f2f2;">
                 <th style="text-align: left;">Flight</th>
+                <th style="text-align: left;">Ticket Price</th>
                 <th style="text-align: left;">Price</th>
                 <th style="text-align: left;">Departure Date</th>
                 <th style="text-align: left;">Departure Time</th>
@@ -37,6 +38,7 @@
             <% flights.forEach(service => { %>
                 <tr>
                     <td><%= service.Name %></td>
+                    <td><%= service.TicketPrice %></td>
                     <td><%= service.Price %></td>
                     <td><%= new Date(service.DepartureDate).toLocaleDateString() %></td>
                     <td><%= service.DepartureTime %></td>
