@@ -15,7 +15,9 @@
                     <td style="padding: 10px; border-right: 1px solid #ccc;"><%= service.Name %></td>
                     <td style="padding: 10px; border-right: 1px solid #ccc;"><%= service.Price ? service.Price : 'N/A' %></td>
                     <td style="padding: 10px; border-right: 1px solid #ccc;"><%= new Date(service.CheckInDate).toLocaleDateString() %></td>
-                    <td style="padding: 10px;"><%= new Date(service.CheckOutDate).toLocaleDateString() %></td>
+                    <td style="padding: 10px; border-right: 1px solid #ccc;"><%= new Date(service.CheckOutDate).toLocaleDateString() %></td>
+                    <td style="padding: 10px; border-right: 1px solid #ccc;"><%= service.Nights %></td>
+                    <td style="padding: 10px;"><%= service.Hotel %></td>
                 </tr>
             <% }); %>
         </tbody>
