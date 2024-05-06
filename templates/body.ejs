@@ -7,17 +7,21 @@
                 <th style="text-align: left; padding: 10px; border-right: 1px solid #ccc;">Price</th>
                 <th style="text-align: left; padding: 10px; border-right: 1px solid #ccc;">Check-In Date</th>
                 <th style="text-align: left; padding: 10px; border-right: 1px solid #ccc;">Check-Out Date</th>
+                <th style="text-align: left; padding: 10px; border-right: 1px solid #ccc;">Check-In Time</th>
+                <th style="text-align: left; padding: 10px; border-right: 1px solid #ccc;">Check-Out Time</th>
                 <th style="text-align: left; padding: 10px; border-right: 1px solid #ccc;">Nights</th>
-                <th style="text-align: left; padding: 10px;">Hotel</th>
+                <th style="padding: 10px;">Hotel</th>
             </tr>
         </thead>
         <tbody>
-            <% accommodation.forEach(service => { %>
-                <tr>
+            <% accommodation.forEach((service, index) => { %>
+                <tr style="border-bottom: <%= index < accommodation.length - 1 ? '1px solid #ccc' : 'none' %>;">
                     <td style="padding: 10px; border-right: 1px solid #ccc;"><%= service.Name %></td>
                     <td style="padding: 10px; border-right: 1px solid #ccc;"><%= service.Price ? service.Price : 'N/A' %></td>
                     <td style="padding: 10px; border-right: 1px solid #ccc;"><%= new Date(service.CheckInDate).toLocaleDateString() %></td>
                     <td style="padding: 10px; border-right: 1px solid #ccc;"><%= new Date(service.CheckOutDate).toLocaleDateString() %></td>
+                    <td style="padding: 10px; border-right: 1px solid #ccc;"><%= new Date(service.CheckInDate).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) %></td>
+                    <td style="padding: 10px; border-right: 1px solid #ccc;"><%= new Date(service.CheckOutDate).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) %></td>
                     <td style="padding: 10px; border-right: 1px solid #ccc;"><%= service.Nights %></td>
                     <td style="padding: 10px;"><%= service.Hotel %></td>
                 </tr>
@@ -31,7 +35,7 @@
             <tr style="background-color: #f2f2f2;">
                 <th style="text-align: left; padding: 10px; border-right: 1px solid #ccc;">Flight</th>
                 <th style="text-align: left; padding: 10px; border-right: 1px solid #ccc;">Ticket Price</th>
-                <th style="text-align: left; padding: 10px; border-right: 1px solid #ccc;">Price</th>
+                <th style="padding: 10px;">Price</th>
                 <th style="text-align: left; padding: 10px; border-right: 1px solid #ccc;">Departure Date</th>
                 <th style="text-align: left; padding: 10px; border-right: 1px solid #ccc;">Departure Time</th>
                 <th style="text-align: left; padding: 10px; border-right: 1px solid #ccc;">Arrival Date</th>
@@ -39,15 +43,15 @@
             </tr>
         </thead>
         <tbody>
-            <% flights.forEach(service => { %>
-                <tr>
+            <% flights.forEach((service, index) => { %>
+                <tr style="border-bottom: <%= index < flights.length - 1 ? '1px solid #ccc' : 'none' %>;">
                     <td style="padding: 10px; border-right: 1px solid #ccc;"><%= service.Name %></td>
                     <td style="padding: 10px; border-right: 1px solid #ccc;"><%= service.TicketPrice %></td>
-                    <td style="padding: 10px; border-right: 1px solid #ccc;"><%= service.Price %></td>
+                    <td style="padding: 10px;"><%= service.Price %></td>
                     <td style="padding: 10px; border-right: 1px solid #ccc;"><%= new Date(service.DepartureDate).toLocaleDateString() %></td>
-                    <td style="padding: 10px; border-right: 1px solid #ccc;"><%= service.DepartureTime %></td>
+                    <td style="padding: 10px; border-right: 1px solid #ccc;"><%= new Date('1970-01-01T' + service.DepartureTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) %></td>
                     <td style="padding: 10px; border-right: 1px solid #ccc;"><%= new Date(service.ArrivalDate).toLocaleDateString() %></td>
-                    <td style="padding: 10px;"><%= service.ArrivalTime %></td>
+                    <td style="padding: 10px;"><%= new Date('1970-01-01T' + service.ArrivalTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) %></td>
                 </tr>
             <% }); %>
         </tbody>
@@ -60,16 +64,21 @@
                 <th style="text-align: left; padding: 10px; border-right: 1px solid #ccc;">Transportation</th>
                 <th style="text-align: left; padding: 10px; border-right: 1px solid #ccc;">Price</th>
                 <th style="text-align: left; padding: 10px; border-right: 1px solid #ccc;">Departure Date</th>
-                <th style="padding: 10px;">Return Date</th>
+                <th style="text-align: left; padding: 10px; border-right: 1px solid #ccc;">Return Time</th>
+                <th style="text-align: left; padding: 10px; border-right: 1px solid #ccc;">Departure Date</th>
+                <th style="padding: 10px;">Return Time</th>
             </tr>
         </thead>
         <tbody>
-            <% transportation.forEach(service => { %>
-                <tr>
+            <% transportation.forEach((service, index) => { %>
+                <tr style="border-bottom: <%= index < transportation.length - 1 ? '1px solid #ccc' : 'none' %>;">
                     <td style="padding: 10px; border-right: 1px solid #ccc;"><%= service.Name %></td>
-                    <td style="padding: 10px; border-right: 1px solid #ccc;"><%= service.Price ? service.Price : 'N/A' %></td>
+                    <td style="padding: 10px; border-right: 1px solid #ccc;"><%= service.Price %></td>
                     <td style="padding: 10px; border-right: 1px solid #ccc;"><%= new Date(service.Departure_Date).toLocaleDateString() %></td>
                     <td style="padding: 10px;"><%= new Date(service.Return_Date).toLocaleDateString() %></td>
+                    <td style="padding: 10px; border-right: 1px solid #ccc;"><%= new Date(service.Departure_Date).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) %></td>
+                    <td style="padding: 10px; border-right: 1px solid #ccc;"><%= new Date(service.Return_Date).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) %></td>
+                    
                 </tr>
             <% }); %>
         </tbody>
@@ -82,10 +91,9 @@
             <div style="margin-bottom: 20px; padding: 10px; border: 1px solid #ccc; background-color: #f9f9f9;">
                 <h3 style="color: #2ecc71;"><%= term.company %></h3>
                 <div>
-                    <%- term.canelation_policy %> <!-- Directly insert the HTML content -->
+                    <%- term.cancellation_policy %> <!-- Corrected spelling -->
                 </div>
             </div>
         <% }); %>
     </div>
-
 </body>
