@@ -49,9 +49,9 @@
                     <td style="padding: 10px; border-right: 1px solid #ccc;"><%= service.TicketPrice %></td>
                     <td style="padding: 10px; border-right: 1px solid #ccc;""><%= service.Price %></td>
                     <td style="padding: 10px; border-right: 1px solid #ccc;"><%= new Date(service.DepartureDate).toLocaleDateString() %></td>
-                    <td style="padding: 10px; border-right: 1px solid #ccc;"><%= new Date('1970-01-01T' + service.DepartureTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) %></td>
+                    <td style="padding: 10px; border-right: 1px solid #ccc;"><%= new Date(service.DepartureDate).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) %></td>
                     <td style="padding: 10px; border-right: 1px solid #ccc;"><%= new Date(service.ArrivalDate).toLocaleDateString() %></td>
-                    <td style="padding: 10px;"><%= new Date('1970-01-01T' + service.ArrivalTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) %></td>
+                    <td style="padding: 10px;"><%= new Date(service.ArrivalDate).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) %></td>
                 </tr>
             <% }); %>
         </tbody>
