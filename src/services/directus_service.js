@@ -23,16 +23,17 @@ const uploadPdf = async (pdfBuffer, quoteNo) => {
     formData.append('title', quoteNo);
 
     try {
-        return await client.request(uploadFiles(formData));
+        return await client.uploadFiles(formData);
     } catch (error) {
         if (error.response && error.response.status === 401) {
             // Token expired, login again
             await login();
-            return await client.request(uploadFiles(formData));
+            return await client.uploadFiles(formData);
         } else {
             throw error;
         }
     }
+    
 };
 
 module.exports = {
