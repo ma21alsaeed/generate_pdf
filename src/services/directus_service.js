@@ -1,4 +1,8 @@
 const { createDirectus, rest, uploadFiles } = require('@directus/sdk');
+
+let client;
+let token;
+
 const login = async () => {
     client = createDirectus(process.env.DIRECTUS_ENDPOINT);
     const response = await client.auth.login({
