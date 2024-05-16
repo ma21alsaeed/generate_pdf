@@ -7,7 +7,7 @@ const login = async () => {
     client = createDirectus(process.env.DIRECTUS_ENDPOINT).with(authentication());
     const response = await client.login( process.env.DIRECTUS_EMAIL,process.env.DIRECTUS_PASSWORD);
     console.log(response);
-    token = response.data.access_token;
+    token = response.access_token;
 };
 
 const uploadPdf = async (pdfBuffer, quoteNo) => {
