@@ -8,6 +8,7 @@ const login = async () => {
     const response = await client.login( process.env.DIRECTUS_EMAIL,process.env.DIRECTUS_PASSWORD);
     console.log(response);
     token = response.access_token;
+    
 };
 
 const uploadPdf = async (pdfBuffer, quoteNo) => {
@@ -15,7 +16,7 @@ const uploadPdf = async (pdfBuffer, quoteNo) => {
         await login();
     }
 
-    client = client.with(rest(token));
+    client = client.with(authentication(token));
 
     const formData = new FormData();
     formData.append('file', new Blob([pdfBuffer], { type: 'application/pdf' }), `${quoteNo}.pdf`);
