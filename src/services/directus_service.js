@@ -6,7 +6,7 @@ let token;
 const login = async () => {
     client = createDirectus(process.env.DIRECTUS_ENDPOINT).with(authentication());
     const response = await client.login( process.env.DIRECTUS_EMAIL,process.env.DIRECTUS_PASSWORD);
-    console.write(response);
+    console.log(response);
     token = response.data.access_token;
 };
 
