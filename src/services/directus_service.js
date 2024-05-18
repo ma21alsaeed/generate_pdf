@@ -26,10 +26,10 @@ const validateToken = async () => {
   } else {
     try {
       // Assuming there's a method to validate the token
-      const isValid = await client.validateToken(access_token);
-      if (!isValid) {
+     // const isValid = await client.validateToken(access_token);
+   /*   if (!isValid) {
         await login();
-      }
+      }*/
     } catch (error) {
       console.error('Error:', error);
       await login();
@@ -41,8 +41,9 @@ const uploadPdf = async (pdfBuffer, quoteNo) => {
     await validateToken();
     
     const formData = new FormData();
-    formData.append('file', new Blob([pdfBuffer], { type: 'application/pdf' }), `Quotation_PDF/${quoteNo}.pdf`);
+    formData.append('file', new Blob([pdfBuffer], { type: 'application/pdf' }), `${quoteNo}.pdf`);
     formData.append('title', quoteNo);
+    formData.append('folder', 'Quotation_PDF');
 
     return await client.request(uploadFiles(formData));
 };
