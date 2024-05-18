@@ -13,7 +13,7 @@ console.log(endpoint);
 const login = async () => {
   try {
     const response = await client.login({
-      email: email.toString(),
+      email: 'mahmoud@test.com',
       password: password.toString(),
     });
     console.log('Access token:', response.access_token);
