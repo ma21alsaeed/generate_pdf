@@ -12,10 +12,10 @@ console.log(password);
 console.log(endpoint);
 const login = async () => {
   try {
-    const response = await client.login({
-      email: 'mahmoud@test.com',
-      password: password.toString(),
-    });
+    const response = await client.login(
+        email.toString(),
+     password.toString(),
+    );
     console.log('Access token:', response.access_token);
   } catch (error) {
     console.error('Error:', error);
