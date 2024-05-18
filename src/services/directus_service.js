@@ -7,7 +7,7 @@ const login = async () => {
     if (!client) {
         client = createDirectus(process.env.DIRECTUS_ENDPOINT).with(authentication());
     }
-    const response = await client.auth.login({
+    const response = await client.login({
         email: process.env.DIRECTUS_EMAIL,
         password: process.env.DIRECTUS_PASSWORD
     });
