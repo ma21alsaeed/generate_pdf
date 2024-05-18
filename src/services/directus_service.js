@@ -1,6 +1,4 @@
-const { createDirectus } = require('@directus/sdk');
-const FormData = require('form-data');
-const { Blob } = require('buffer');
+const { createDirectus, rest, uploadFiles } = require('@directus/sdk');
 
 let client;
 let token;
@@ -13,7 +11,6 @@ const login = async () => {
     });
     console.log(response);
     token = response.access_token;
-    client.auth.token = token; // Set the token in the client
 };
 
 const uploadPdf = async (pdfBuffer, quoteNo) => {
@@ -26,7 +23,7 @@ const uploadPdf = async (pdfBuffer, quoteNo) => {
     formData.append('title', quoteNo);
 
     try {
-        return await client.items('directus_files').createOne(formData, {
+        return await client.uploadFiles(formData, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -35,7 +32,7 @@ const uploadPdf = async (pdfBuffer, quoteNo) => {
         if (error.response && error.response.status === 401) {
             // Token expired, login again
             await login();
-            return await client.items('directus_files').createOne(formData, {
+            return await client.uploadFiles(formData, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -45,6 +42,8 @@ const uploadPdf = async (pdfBuffer, quoteNo) => {
         }
     }
 };
+
+
 
 module.exports = {
     uploadPdf,
