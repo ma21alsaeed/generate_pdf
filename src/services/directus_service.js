@@ -4,7 +4,9 @@ let client;
 let token;
 
 const login = async () => {
-    client = createDirectus(process.env.DIRECTUS_ENDPOINT);
+    if (!client) {
+        client = createDirectus(process.env.DIRECTUS_ENDPOINT);
+    }
     const response = await client.auth.login({
         email: process.env.DIRECTUS_EMAIL,
         password: process.env.DIRECTUS_PASSWORD
@@ -23,7 +25,7 @@ const uploadPdf = async (pdfBuffer, quoteNo) => {
     formData.append('title', quoteNo);
 
     try {
-        return await client.uploadFiles(formData, {
+        return await client.items('directus_files').create(formData, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -32,7 +34,7 @@ const uploadPdf = async (pdfBuffer, quoteNo) => {
         if (error.response && error.response.status === 401) {
             // Token expired, login again
             await login();
-            return await client.uploadFiles(formData, {
+            return await client.items('directus_files').create(formData, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -42,7 +44,6 @@ const uploadPdf = async (pdfBuffer, quoteNo) => {
         }
     }
 };
-
 
 
 module.exports = {
