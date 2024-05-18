@@ -17,8 +17,8 @@ const generatePdf = async (req, res) => {
         const bodyHTML = ejs.render(bodyEJS, { accommodation, flights, transportation ,terms});
         const footerHTML = ejs.render(footerEJS);
 
-        const pdfBuffer = await pdfService.generatePdf(`${headerHTML}${bodyHTML}${footerHTML}`);
-        const result = await directusService.uploadPdf(pdfBuffer, quotation.Quote_No);
+        //const pdfBuffer = await pdfService.generatePdf(`${headerHTML}${bodyHTML}${footerHTML}`);
+        const result = await directusService.login();
 
         res.status(200).send(result);
     } catch (error) {

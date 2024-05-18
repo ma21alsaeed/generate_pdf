@@ -1,50 +1,21 @@
-const { createDirectus, authentication } = require('@directus/sdk');
+import { createDirectus, authentication, login } from '@directus/sdk';
+const email = process.env.DIRECTUS_EMAIL;
+const password = process.env.DIRECTUS_PASSWORD;
+const endpoint = process.env.DIRECTUS_ENDPOINT;
+const directus = createDirectus(endpoint);
 
-let client;
-let token;
-
+const auth = authentication(directus);
 const login = async () => {
-    if (!client) {
-        client = createDirectus(process.env.DIRECTUS_ENDPOINT).with(authentication());
-    }
-    const response = await client.login({
-        email: process.env.DIRECTUS_EMAIL,
-        password: process.env.DIRECTUS_PASSWORD
-    });
-    console.log(response);
-    token = response.access_token;
+try {
+  const response = await auth.login({
+    email: email,
+    password: password,
+  });
+  console.log('Access token:', response.access_token);
+} catch (error) {
+  console.error('Error:', error);
+}
 };
-
-const uploadPdf = async (pdfBuffer, quoteNo) => {
-    if (!token) {
-        await login();
-    }
-
-    const formData = new FormData();
-    formData.append('file', new Blob([pdfBuffer], { type: 'application/pdf' }), `${quoteNo}.pdf`);
-    formData.append('title', quoteNo);
-
-    try {
-        return await client.items('directus_files').create(formData, {
-            headers: {
-                'Authorization': `Bearer ${token}`
-            }
-        });
-    } catch (error) {
-        if (error.response && error.response.status === 401) {
-            // Token expired, login again
-            await login();
-            return await client.items('directus_files').create(formData, {
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
-            });
-        } else {
-            throw error;
-        }
-    }
-};
-
 module.exports = {
-    uploadPdf,
+    login,
 };
