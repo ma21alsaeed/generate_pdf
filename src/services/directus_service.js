@@ -1,11 +1,11 @@
-const { createDirectus, rest, uploadFiles } = require('@directus/sdk');
+const { createDirectus, authentication } = require('@directus/sdk');
 
 let client;
 let token;
 
 const login = async () => {
     if (!client) {
-        client = createDirectus(process.env.DIRECTUS_ENDPOINT);
+        client = createDirectus(process.env.DIRECTUS_ENDPOINT).with(authentication());
     }
     const response = await client.auth.login({
         email: process.env.DIRECTUS_EMAIL,
@@ -44,7 +44,6 @@ const uploadPdf = async (pdfBuffer, quoteNo) => {
         }
     }
 };
-
 
 module.exports = {
     uploadPdf,
