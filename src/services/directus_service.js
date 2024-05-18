@@ -5,12 +5,12 @@ const email = process.env.DIRECTUS_EMAIL;
 const password = process.env.DIRECTUS_PASSWORD;
 const endpoint = process.env.DIRECTUS_ENDPOINT;
 
-const directus = createDirectus(endpoint);
-const auth = authentication(directus);
+const client = createDirectus(endpoint).with(authentication());;
+
 
 const login = async () => {
   try {
-    const response = await auth.login({
+    const response = await client.login({
       email: email,
       password: password,
     });
