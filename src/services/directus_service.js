@@ -41,7 +41,7 @@ const uploadPdf = async (pdfBuffer, quoteNo) => {
     await validateToken();
     
     const formData = new FormData();
-    formData.append('file', new Blob([pdfBuffer], { type: 'application/pdf' }), `${quoteNo}.pdf`);
+    formData.append('file', new Blob([pdfBuffer], { type: 'application/pdf' }), `Quotation_PDF/${quoteNo}.pdf`);
     formData.append('title', quoteNo);
 
     return await client.request(uploadFiles(formData));
