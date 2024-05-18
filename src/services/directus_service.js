@@ -4,7 +4,7 @@ const email = process.env.DIRECTUS_EMAIL;
 const password = process.env.DIRECTUS_PASSWORD;
 const endpoint = process.env.DIRECTUS_ENDPOINT;
 
-const client = createDirectus(endpoint).with(authentication());
+const client = createDirectus(endpoint).with(authentication()).with(rest());
 
 let access_token;
 const login = async () => {
