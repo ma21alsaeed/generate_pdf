@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-    <%- include('../partials/header', { quotation: quotation }) %>
-    <%- include('../partials/body', { accommodation: accommodation, flights: flights, transportation: transportation, terms: terms }) %>
-    <%- include('../partials/footer') %>
+<%- include('src/templates/partials/header', { quotation: quotation }) %>
+<%- include('src/templates/partials/body', { accommodation: accommodation, flights: flights, transportation: transportation, terms: terms }) %>
+<%- include('src/templates/partials/footer') %>
+
 </body>
 </html>
