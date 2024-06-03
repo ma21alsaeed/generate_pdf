@@ -28,7 +28,7 @@ const validateToken = async () => {
       // Assuming there's a method to validate the token
      // const isValid = await client.validateToken(access_token);
    /*   if (!isValid) {
-        await login();*/
+        await login();
       }
      catch (error) {
       console.error('Error:', error);
