@@ -6,18 +6,18 @@ const directusService = require('../services/directus_service');
 
 const generatePdf = async (req, res) => {
     try {
-        const { quotation, transportation, accommodation, flights,terms } = req.body;
+        const { quotation, transportation, accommodation, flights, terms } = req.body;
 
-        // Read and render EJS templates
-        const headerEJS = fs.readFileSync(path.join(__dirname, '../../templates/header.ejs'), 'utf8');
-        const bodyEJS = fs.readFileSync(path.join(__dirname, '../../templates/body.ejs'), 'utf8');
-        const footerEJS = fs.readFileSync(path.join(__dirname, '../../templates/footer.ejs'), 'utf8');
-
-        const headerHTML = ejs.render(headerEJS, { quotation });
-        const bodyHTML = ejs.render(bodyEJS, { accommodation, flights, transportation ,terms});
-        const footerHTML = ejs.render(footerEJS);
-
-        const pdfBuffer = await pdfService.generatePdf(`${headerHTML}${bodyHTML}${footerHTML}`);
+        // Ensure correct template path
+        const templatePath = path.join(__dirname, '../../templates/pdf/pdf_template.ejs');
+        const templateEJS = fs.readFileSync(templatePath, 'utf8');
+        
+        // Use absolute paths for includes
+        const options = {
+            root: path.join(__dirname, '../../templates')
+        };
+        const htmlContent = ejs.render(templateEJS, { quotation, accommodation, flights, transportation, terms }, options);
+        const pdfBuffer = await pdfService.generatePdf(`${htmlContent}`);
         const result = await directusService.uploadPdf(pdfBuffer, quotation.Quote_No);
 
         res.status(200).send(result);
