@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quotation Report</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <%- include('partials/header', { quotation: quotation }) %>
+    <%- include('partials/body', { accommodation: accommodation, flights: flights, transportation: transportation, terms: terms }) %>
+    <%- include('partials/footer') %>
+</body>
+</html>

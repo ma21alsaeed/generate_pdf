@@ -1,0 +1,87 @@
+<body>
+    <h2>Accommodation Services</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Accommodation</th>
+                <th>Price</th>
+                <th>Check-In</th>
+                <th>Check-Out</th>
+                <th>Nights</th>
+                <th>Accommodation Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% accommodation.forEach((service, index) => { %>
+                <tr>
+                    <td><%= service.Name %></td>
+                    <td><%= service.Price ? service.Price : 'N/A' %></td>
+                    <td><%= new Date(service.CheckInDate).toLocaleString() %></td>
+                    <td><%= new Date(service.CheckOutDate).toLocaleString() %></td>
+                    <td><%= service.Nights %></td>
+                    <td>
+                        <a href="<%= service.AccommodationImages %>"><%= service.AccommodationName %></a>
+                    </td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+
+    <h2>Flight Services</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Flight</th>
+                <th>Ticket Price</th>
+                <th>Price</th>
+                <th>Departure</th>
+                <th>Arrival</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% flights.forEach((service, index) => { %>
+                <tr>
+                    <td><%= service.Name %></td>
+                    <td><%= service.TicketPrice %></td>
+                    <td><%= service.Price %></td>
+                    <td><%= new Date(service.DepartureDate).toLocaleString() %></td>
+                    <td><%= new Date(service.ArrivalDate).toLocaleString() %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+
+    <h2>Transportation Services</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Transportation</th>
+                <th>Price</th>
+                <th>Departure</th>
+                <th>Return</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% transportation.forEach((service, index) => { %>
+                <tr>
+                    <td><%= service.Name %></td>
+                    <td><%= service.Price %></td>
+                    <td><%= new Date(service.Departure_Date).toLocaleString() %></td>
+                    <td><%= new Date(service.Return_Date).toLocaleString() %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+
+    <h2>Terms and Conditions</h2>
+    <div>
+        <% terms.forEach(term => { %>
+            <div>
+                <h3><%= term.company %></h3>
+                <div>
+                    <%- term.cancelation_policy %>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+</body>
