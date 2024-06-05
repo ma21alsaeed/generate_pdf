@@ -22,13 +22,15 @@ th, td {
     border-right: 1px solid #ccc;
 }
 
+tr:not(:last-child) {
+    border-bottom: 1px solid #ccc;
+}
+
 tr:nth-child(even) {
     background-color: #f2f2f2;
 }
-tr:last-child {
-    border-bottom: none;
-}
-.header-content  h2{
+
+.header-content h2 {
     color: #ffffff;
 }
 
@@ -39,9 +41,11 @@ header {
     display: flex;
     justify-content: space-between;
 }
+
 header img {
     width: 100px;
 }
-h1{
-    color:#1dda6b;
+
+h1 {
+    color: #1dda6b;
 }
