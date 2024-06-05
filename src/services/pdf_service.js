@@ -1,6 +1,6 @@
 const puppeteer = require('puppeteer');
 
-const generatePdf = async (htmlContent) => {
+const generatePdf = async (htmlContent,footer) => {
     const browser = await puppeteer.launch({
         args: [
             '--disable-setuid-sandbox',
@@ -20,10 +20,12 @@ const generatePdf = async (htmlContent) => {
     const pdfBuffer = await page.pdf({
         format: "A4",
         printBackground: true,
+        displayHeaderFooter:true,
+        footerTemplate:footer,
         margin: {
-            top: '20px',
-            right: '20px',
-            bottom: '20px',
+            top: '10px',
+            right: '6px',
+            bottom: '6px',
             left: '20px'
         }
     });
