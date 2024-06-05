@@ -25,17 +25,17 @@ th, td {
 tr:nth-child(even) {
     background-color: #f2f2f2;
 }
-
 tr:last-child {
     border-bottom: none;
 }
-
+.header-content  h2{
+    color: #ffffff;
+}
 footer {
     background-color: #ffffff;
     color: #1dda6b;
     padding: 20px;
 }
-
 header {
     background-color: #2ecc71;
     color: #ffffff;
@@ -43,16 +43,8 @@ header {
     display: flex;
     justify-content: space-between;
 }
-
 header img {
     width: 100px;
-}
-
-div {
-    margin-bottom: 20px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    background-color: #f9f9f9;
 }
 h1{
     color:#1dda6b;
