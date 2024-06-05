@@ -25,8 +25,8 @@ const generatePdf = async (htmlContent,footer) => {
         margin: {
             top: '10px',
             right: '6px',
-            bottom: '6px',
-            left: '20px'
+
+            left: '6px'
         }
     });
     
