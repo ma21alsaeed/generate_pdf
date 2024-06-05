@@ -9,6 +9,7 @@ h2 {
     margin-bottom: 10px;
 }
 
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -48,4 +49,70 @@ header img {
 
 h1 {
     color: #1dda6b;
+}
+body {
+    color: #333;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+h2 {
+    color: #2ecc71;
+    margin-bottom: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+}
+
+th, td {
+    text-align: left;
+    padding: 10px;
+    border-right: 1px solid #ccc;
+}
+
+tr:not(:last-child) {
+    border-bottom: 1px solid #ccc;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.header-content h2 {
+    color: #ffffff;
+}
+
+header {
+    background-color: #2ecc71;
+    color: #ffffff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+header img {
+    width: 100px;
+}
+
+h1 {
+    color: #1dda6b;
+}
+
+.terms-section {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border: 1px solid #ccc;
+    margin-top: 20px;
+}
+
+.terms-section h3 {
+    margin-top: 0;
+}
+
+.terms-section div {
+    margin-bottom: 10px;
 }
