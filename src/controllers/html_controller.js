@@ -16,7 +16,7 @@ const generateHtml = async (req, res) => {
         };
         
         const htmlContent = ejs.render(templateEJS, { quotation, accommodation, flights, transportation, terms }, options);
-
+        htmlContent = htmlContent.replace(/\n/g, '');
         res.setHeader('Content-Type', 'text/html');
         res.send(htmlContent);
     } catch (error) {
