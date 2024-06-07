@@ -22,11 +22,11 @@ const generatePdf = async (htmlContent,footer) => {
         printBackground: true,
         displayHeaderFooter:true,
         footerTemplate:footer,
-        height:"60px",
+       
         margin: {
             top: '10px',
             right: '6px',
-            bottom: '10px',
+ 
             left: '6px'
         }
     });

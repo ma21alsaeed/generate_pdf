@@ -15,7 +15,7 @@ const generateHtml = async (req, res) => {
             root: path.join(__dirname, '../../templates')
         };
         
-        const htmlContent = ejs.render(templateEJS, { quotation, accommodation, flights, transportation, terms }, options).replace(/\n/g, '');
+        const htmlContent = ejs.render(templateEJS, { quotation, accommodation, flights, transportation, terms }, options).replace(/\s+/g, '');
         
         res.setHeader('Content-Type', 'text/html');
         res.send(htmlContent);
