@@ -16,17 +16,19 @@ const generatePdf = async (htmlContent,footer) => {
 
     const page = await browser.newPage();
     await page.setContent(htmlContent);
-    
+    let height = await page.evaluate(() => document.documentElement.offsetHeight);
     const pdfBuffer = await page.pdf({
         format: "A4",
         printBackground: true,
         displayHeaderFooter:true,
         footerTemplate:footer,
+        pageRanges: '2-',
+        height: height*0.75 + 'px',
        
         margin: {
             top: '10px',
             right: '6px',
- 
+            bottom:'10px',
             left: '6px'
         }
     });
