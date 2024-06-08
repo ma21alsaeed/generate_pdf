@@ -17,17 +17,17 @@ const generatePdf = async (htmlContent, footer) => {
     const page = await browser.newPage();
 
     // Set the content first
-    await page.setContent(htmlContent, { waitUntil: 'networkidle0' });
+    await page.setContent(htmlContent);
 
-    // Evaluate the height after setting the content
-    let height = await page.evaluate(() => document.documentElement.scrollHeight);
+    // Then evaluate the height
+    let height = await page.evaluate(() => document.documentElement.offsetHeight);
 
     const pdfBuffer = await page.pdf({
         format: "A4",
         printBackground: true,
         displayHeaderFooter: true,
         footerTemplate: footer,
-        height: height + 'px', // Set the height according to the content
+        height: height * 0.75 + 'px',
         margin: {
             top: '10px',
             right: '6px',
