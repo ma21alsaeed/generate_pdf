@@ -1,6 +1,6 @@
 const puppeteer = require('puppeteer');
 
-const generatePdf = async (htmlContent,footer) => {
+const generatePdf = async (htmlContent, footer) => {
     const browser = await puppeteer.launch({
         args: [
             '--disable-setuid-sandbox',
@@ -15,24 +15,26 @@ const generatePdf = async (htmlContent,footer) => {
     });
 
     const page = await browser.newPage();
-    await page.setContent(htmlContent);
-    let height = await page.evaluate(() => document.documentElement.offsetHeight);
+
+    // Set the content first
+    await page.setContent(htmlContent, { waitUntil: 'networkidle0' });
+
+    // Evaluate the height after setting the content
+    let height = await page.evaluate(() => document.documentElement.scrollHeight);
+
     const pdfBuffer = await page.pdf({
         format: "A4",
         printBackground: true,
-        displayHeaderFooter:true,
-        footerTemplate:footer,
-    
-        height: height*0.75 + 'px',
-       
+        displayHeaderFooter: true,
+        footerTemplate: footer,
+        height: height + 'px', // Set the height according to the content
         margin: {
             top: '10px',
             right: '6px',
-            bottom:'10px',
+            bottom: '10px',
             left: '6px'
         }
     });
-    
 
     await browser.close();
 
