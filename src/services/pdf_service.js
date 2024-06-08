@@ -30,7 +30,6 @@ const generatePdf = async (htmlContent, footer) => {
         margin: {
             top: '12px',
             right: '12px', 
-
             bottom: '120px',
             left: '12px'
         }
