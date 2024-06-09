@@ -9,6 +9,7 @@
                 <th>Check-Out</th>
                 <th>Nights</th>
                 <th>Accommodation Name</th>
+                <th>Room Type/Organization</th>
             </tr>
         </thead>
         <tbody>
@@ -19,8 +20,15 @@
                     <td><%= new Date(service.CheckInDate).toLocaleString() %></td>
                     <td><%= new Date(service.CheckOutDate).toLocaleString() %></td>
                     <td><%= service.Nights %></td>
+                    <td><%= service.AccommodationName %></td>
                     <td>
-                        <a href="<%= service.AccommodationImages %>"><%= service.AccommodationName %></a>
+                        <% if (service.RoomDetails && service.RoomDetails.Images_Link) { %>
+                            <a href="<%= service.RoomDetails.Images_Link %>"><%= service.RoomDetails.Room_Type %></a>
+                        <% } else if (service.RentalHomeDetails && service.RentalHomeDetails.Images_Link) { %>
+                            <a href="<%= service.RentalHomeDetails.Images_Link %>"><%= service.RentalHomeDetails.Room_Organization %></a>
+                        <% } else { %>
+                            <%= service.RoomDetails ? service.RoomDetails.Room_Type : service.RentalHomeDetails.Room_Organization %>
+                        <% } %>
                     </td>
                 </tr>
             <% }); %>
