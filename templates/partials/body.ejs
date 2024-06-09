@@ -20,7 +20,13 @@
                     <td><%= new Date(service.CheckInDate).toLocaleString() %></td>
                     <td><%= new Date(service.CheckOutDate).toLocaleString() %></td>
                     <td><%= service.Nights %></td>
-                    <td><%= service.AccommodationName %></td>
+                    <td>
+                        <% if (service.AccommodationImages) { %>
+                            <a href="<%= service.AccommodationImages %>"><%= service.AccommodationName %></a>
+                        <% } else { %>
+                            <%= service.AccommodationName %>
+                        <% } %>
+                    </td>
                     <td>
                         <% if (service.RoomDetails && service.RoomDetails.Images_Link) { %>
                             <a href="<%= service.RoomDetails.Images_Link %>"><%= service.RoomDetails.Room_Type %></a>
