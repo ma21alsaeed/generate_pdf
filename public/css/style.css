@@ -42,7 +42,9 @@ header {
     display: flex;
     justify-content: space-between;
 }
-
+th {
+    border-bottom: 2px solid #ccc; /* Add horizontal divider */
+}
 header img {
     width: 100px;
 }
