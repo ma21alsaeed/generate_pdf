@@ -20,7 +20,7 @@ const generatePdf = async (req, res) => {
         const options = {
             root: path.join(__dirname, '../../templates')
         };
-        const htmlContent = ejs.render(templateEJS, {accommodation, flights, transportation, terms }, options);
+        const htmlContent = ejs.render(templateEJS, {quotation,accommodation, flights, transportation, terms }, options);
         const footerContent = ejs.render(footerEJS);
         const headerContent = ejs.render(headerEJS,{quotation});
         const pdfBuffer = await pdfService.generatePdf(`${htmlContent}`,`${footerContent}`,`${headerContent}`);
