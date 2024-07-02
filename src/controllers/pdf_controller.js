@@ -25,7 +25,7 @@ const generatePdf = async (req, res) => {
         const headerContent = ejs.render(headerEJS,{quotation});
         const pdfBuffer = await pdfService.generatePdf(`${htmlContent}`,`${footerContent}`,`${headerContent}`);
         //30-06-2024_holiday_house_2024-1-28
-        const result = await directusService.uploadPdf(pdfBuffer, quotation.date_created+"_"+quotation.customer+"_"+quotation.Quote_No);
+        const result = await directusService.uploadPdf(pdfBuffer, quotation.data_created+"_"+quotation.customer+"_"+quotation.Quote_No);
 
         res.status(200).send(result);
     } catch (error) {
