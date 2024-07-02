@@ -1,6 +1,6 @@
 const puppeteer = require('puppeteer');
 
-const generatePdf = async (htmlContent, footer) => {
+const generatePdf = async (htmlContent, footer, header) => {
     const browser = await puppeteer.launch({
         args: [
             '--disable-setuid-sandbox',
@@ -27,6 +27,7 @@ const generatePdf = async (htmlContent, footer) => {
         printBackground: true,
         displayHeaderFooter: true,
         footerTemplate: footer,
+        headerTemplate:header,
         margin: {
             top: '12px',
             right: '12px', 
