@@ -38,7 +38,7 @@ tr:nth-child(even) {
 header {
     background-color: #2ecc71;
     color: #ffffff;
-    padding: 20px;
+    padding: 8px;
     display: flex;
     justify-content: space-between;
 }
@@ -46,7 +46,7 @@ th {
     border-bottom: 2px solid #ccc; /* Add horizontal divider */
 }
 header img {
-    width: 100px;
+    width: 80px;
 }
 
 h1 {
@@ -88,18 +88,6 @@ tr:nth-child(even) {
 
 .header-content h2 {
     color: #ffffff;
-}
-
-header {
-    background-color: #2ecc71;
-    color: #ffffff;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-}
-
-header img {
-    width: 100px;
 }
 
 h1 {
