@@ -40,8 +40,16 @@ header {
     color: #ffffff;
     padding: 8px;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
 }
+
+
+.header-content, .header-bottom {
+    width: 100%;
+    padding: 8px;
+}
+
 th {
     border-bottom: 2px solid #ccc; /* Add horizontal divider */
 }

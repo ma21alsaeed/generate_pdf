@@ -1,13 +1,13 @@
 <header>
-    <div class="header-content">
+    <div class="header-content" style="background-color:#2ecc71">
         <h2>Safari Trabzon</h2>
         <p>Customer: <%= quotation.customer %></p>
+        <img src=<%= quotation.logo %>  width="100px">
+    </div>
+    <div class="header-bottom" style="background-color: #ffffff;">
         <p>Email: <%= quotation.email %></p>
         <p>Phone: <%= quotation.phone %></p>
         <p>Valid Until: <%= new Date(quotation.Valid_Until).toLocaleString() %></p>
-    </div>
-    <div>
-        <img src=<%= quotation.logo %>  width="100px">
         <p>Quote No: <%= quotation.Quote_No %></p>
         <p>Grand Total: <%= quotation.Grand_Total %></p>
         <p>No of Travelers: <%= quotation.No_of_Travelers %></p>
