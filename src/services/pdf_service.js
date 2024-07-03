@@ -27,9 +27,8 @@ const generatePdf = async (htmlContent, footer, header) => {
         printBackground: true,
         displayHeaderFooter: true,
         footerTemplate: footer,
-        headerTemplate:header,
         margin: {
-            top: '200px',
+            top: '12px',
             right: '12px', 
             bottom: '120px',
             left: '12px'
