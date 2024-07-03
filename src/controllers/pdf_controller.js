@@ -23,7 +23,9 @@ const generatePdf = async (req, res) => {
         const pdfBuffer = await pdfService.generatePdf(`${htmlContent}`,`${footerContent}`);
         //30-06-2024_holiday_house_2024-1-28
         //new Date(quotation.data_created).toLocaleString()
-        const result = await directusService.uploadPdf(pdfBuffer, (new Date(quotation.data_created).toDateString())+"_"+quotation.customer+"_"+quotation.Quote_No);
+        const result = await directusService.uploadPdf(pdfBuffer, new Intl.DateTimeFormat('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' }).format(new Date(quotation.data_created)) +
+        "_" + quotation.customer + 
+        "_" + quotation.Quote_No);
 
         res.status(200).send(result);
     } catch (error) {
