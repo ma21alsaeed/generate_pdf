@@ -1,14 +1,13 @@
-<header style="font-size: 12px;width: 100%; background-color: #2ecc71; color: rgb(255, 255, 255); padding: 20px; display: flex; justify-content: space-between;">
-
+<header>
     <div class="header-content">
         <h2>Safari Trabzon</h2>
-        <p>Customer: <%= quotation.customer %></p>
+        <p class="customer-name">Customer: <%= quotation.customer %></p>
         <p>Email: <%= quotation.email %></p>
         <p>Phone: <%= quotation.phone %></p>
         <p>Valid Until: <%= new Date(quotation.Valid_Until).toLocaleString() %></p>
     </div>
-    <div>
-        <img src=<%= quotation.logo %>  width="100px">
+    <div class="header-logo">
+        <img src="<%= quotation.logo %>" width="100px">
         <p>Quote No: <%= quotation.Quote_No %></p>
         <p>Grand Total: <%= quotation.Grand_Total %></p>
         <p>No of Travelers: <%= quotation.No_of_Travelers %></p>

@@ -9,7 +9,6 @@ h2 {
     margin-bottom: 10px;
 }
 
-
 table {
     width: 100%;
     border-collapse: collapse;
@@ -31,69 +30,27 @@ tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
-.header-content h2 {
+.header-content h2, .header-content .customer-name {
+    background-color: #2ecc71;
     color: #ffffff;
+    padding: 10px;
+    margin: 0;
+}
+
+.header-content {
+    flex-grow: 1;
+}
+
+.header-logo {
+    background-color: #2ecc71;
+    padding: 10px;
 }
 
 header {
-    background-color: #2ecc71;
-    color: #ffffff;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-}
-th {
-    border-bottom: 2px solid #ccc; /* Add horizontal divider */
-}
-header img {
-    width: 100px;
-}
-
-h1 {
-    color: #1dda6b;
-}
-body {
+    background-color: #ffffff;
+    border: 2px solid #2ecc71;
     color: #333;
-    font-family: Arial, sans-serif;
-    padding: 20px;
-}
-
-h2 {
-    color: #2ecc71;
-    margin-bottom: 10px;
-}
-
-table {
-    table-layout: fixed;
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-}
-
-th, td {
-    text-align: left;
     padding: 10px;
-    border-right: 1px solid #ccc;
-    word-wrap: break-word;
-}
-
-tr:not(:last-child) {
-    border-bottom: 1px solid #ccc;
-}
-
-tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
-.header-content h2 {
-    color: #ffffff;
-}
-
-header {
-    background-color: #2ecc71;
-    color: #ffffff;
-    padding: 20px;
     display: flex;
     justify-content: space-between;
 }
@@ -114,6 +71,4 @@ h1 {
 
 .terms-section h3 {
     margin-top: 0;
-    
 }
-

@@ -11,8 +11,6 @@ const generatePdf = async (req, res) => {
         // Ensure correct template path
         const footerPath = path.join(__dirname, '../../templates/partials/footer.ejs');
         const footerEJS = fs.readFileSync(footerPath, 'utf8');
-        const headerPath = path.join(__dirname, '../../templates/partials/header.ejs');
-        const headerEJS = fs.readFileSync(headerPath, 'utf8');
         const templatePath = path.join(__dirname, '../../templates/pdf/pdf_template.ejs');
         const templateEJS = fs.readFileSync(templatePath, 'utf8');
       
@@ -22,8 +20,7 @@ const generatePdf = async (req, res) => {
         };
         const htmlContent = ejs.render(templateEJS, {quotation,accommodation, flights, transportation, terms }, options);
         const footerContent = ejs.render(footerEJS);
-        const headerContent = ejs.render(headerEJS,{quotation});
-        const pdfBuffer = await pdfService.generatePdf(`${htmlContent}`,`${footerContent}`,`${headerContent}`);
+        const pdfBuffer = await pdfService.generatePdf(`${htmlContent}`,`${footerContent}`);
         //30-06-2024_holiday_house_2024-1-28
         //new Date(quotation.data_created).toLocaleString()
         const result = await directusService.uploadPdf(pdfBuffer, (new Date(quotation.data_created).toDateString())+"_"+quotation.customer+"_"+quotation.Quote_No);
