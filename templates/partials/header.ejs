@@ -1,7 +1,6 @@
 <header>
     <div class="header-content">
-        <h2>Safari Trabzon</h2>
-        <p>Customer: <%= quotation.customer %></p>
+        <h2><%= quotation.customer %></h2>
         <p>Email: <%= quotation.email %></p>
         <p>Phone: <%= quotation.phone %></p>
         <p>Valid Until: <%= new Date(quotation.Valid_Until).toLocaleString() %></p>
