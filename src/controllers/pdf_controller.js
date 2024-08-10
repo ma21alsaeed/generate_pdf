@@ -19,7 +19,7 @@ const generatePdf = async (req, res) => {
             root: path.join(__dirname, '../../templates')
         };
         const htmlContent = ejs.render(templateEJS, {quotation,accommodation, flights, transportation, terms }, options);
-        const footerContent = ejs.render(footerEJS);
+        const footerContent = ejs.render(footerEJS ,{quotation});
         const pdfBuffer = await pdfService.generatePdf(`${htmlContent}`,`${footerContent}`);
         //30-06-2024_holiday_house_2024-1-28
         //new Date(quotation.data_created).toLocaleString()
