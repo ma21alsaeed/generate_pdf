@@ -1,18 +1,27 @@
 <header>
     <div class="header-content">
-        <h2><%= quotation.customer %></h2>
-        <p>Email: <%= quotation.email %></p>
-        <p>Phone: <%= quotation.phone %></p>
-        <p>Valid Until: <%= new Date(quotation.Valid_Until).toLocaleString() %></p>
-    </div>
-    <div>
-        <img src="<%= quotation.logo %>" width="100px" alt="Company Logo">
-        <p>Quote No: <%= quotation.Quote_No %></p>
-        <p>Grand Total: <%= quotation.Grand_Total %></p>
-        <p>No of Travelers: <%= quotation.No_of_Travelers %></p>
-        <!-- Adding details about adults, children, and babies -->
-        <p>Adults: <%= quotation.Adults %></p>
-        <p>Children: <%= quotation.Childs %></p>
-        <p>Babies: <%= quotation.Babies %></p>
+        <!-- Customer and Contact Information -->
+        <div class="customer-info">
+            <h2><%= quotation.customer %></h2>
+            <p>Email: <%= quotation.email %></p>
+            <p>Phone: <%= quotation.phone %></p>
+            <p>Valid Until: <%= new Date(quotation.Valid_Until).toLocaleString() %></p>
+        </div>
+        
+        <!-- Quotation Details -->
+        <div class="quotation-info">
+            <img src="<%= quotation.logo %>" width="100px" alt="Company Logo">
+            <p><strong>Quote No:</strong> <%= quotation.Quote_No %></p>
+            <p><strong>Grand Total:</strong> <%= quotation.Grand_Total %></p>
+        </div>
+
+        <!-- Traveler Details -->
+        <div class="traveler-info">
+            <h3>Traveler Information</h3>
+            <p><strong>No of Travelers:</strong> <%= quotation.No_of_Travelers %></p>
+            <p><strong>Adults:</strong> <%= quotation.Adults %></p>
+            <p><strong>Children:</strong> <%= quotation.Childs %></p>
+            <p><strong>Babies:</strong> <%= quotation.Babies %></p>
+        </div>
     </div>
 </header>
